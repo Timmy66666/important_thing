@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>上传图片：</title>
+    <link rel="icon" href="../favicon.ico" />
+  </head>
+  <style>
+    body {
+      margin: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url("../star.jpg");
+    }
+    .box {
+      height: 80vh;
+      width: 70%;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+        rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto;
+      text-align: justify;
+      color: #333;
+      font-size: 17px;
+      line-height: 1.7;
+      letter-spacing: 0.034em;
+      font-family: "思源黑体";
+      overflow-y: scroll;
+    }
+    .box::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="box">
+      <h1>上传图片：</h1>
+      <form method="GET" id="form">
+        <p style="margin-left: 50px">图片URL：</p>
+        <input
+          style="margin-left: 50px; width: 300px"
+          placeholder="https://image.baidu.com/"
+        />
+        <br /><br />
+        <p style="margin-left: 50px">对应心情：</p>
+        <input style="margin-left: 50px; width: 300px" placeholder="开心" />
+        <br /><br /><br />
+      </form>
+      <input style="margin-left: 50px" type="submit" onclick="loading()" />
+    </div>
+  </body>
+  <script>
+    let form = document.getElementById("form");
+    function loading() {
+      let url = form.elements[0].value;
+      let mood = form.elements[1].value;
+      location.replace("./ok.html");
+    }
+  </script>
+</html>

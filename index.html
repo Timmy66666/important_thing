@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello!</title>
+    <link rel="icon" href="./favicon.ico" />
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .img {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 730px;
+        width: 1530px;
+        background: URL("./star.jpg");
+      }
+      #typeBox1 {
+        border: 0;
+        border-bottom: 2px solid #fff;
+        padding: 4px 2px;
+        display: block;
+        background: 0;
+        line-height: 1.5;
+        outline: none;
+        text-align: center;
+        transition: border-color 0.2s ease-in-out;
+        border-radius: 0;
+        color: #fff;
+        font-size: 2rem;
+        max-width: 90%;
+      }
+      #typeBox2 {
+        margin-top: 100px;
+        border: 0;
+        border-bottom: 2px solid #fff;
+        padding: 4px 2px;
+        display: block;
+        background: 0;
+        line-height: 1.5;
+        outline: none;
+        text-align: center;
+        transition: border-color 0.2s ease-in-out;
+        border-radius: 0;
+        color: #fff;
+        font-size: 1rem;
+        max-width: 90%;
+      }
+      #button1 {
+        margin-left: -50px;
+        margin-right: 10px;
+        color: #ccc;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+      }
+      #button2 {
+        margin-top: 100px;
+        margin-left: -50px;
+        margin-right: 10px;
+        color: #ccc;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+      }
+      input::placeholder {
+        color: #ccc;
+      }
+      input::-webkit-input-placeholder {
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg" class="img">
+      <div class="box">
+        <input placeholder="最重要的事？" id="typeBox1" />
+        <span id="button1" onclick="change1()">✔</span>
+      </div>
+      <div class="box">
+        <input placeholder="心情如何？" id="typeBox2" />
+        <span id="button2" onclick="change2()">✔</span>
+      </div>
+    </div>
+    <a style="text-decoration: none" href="./upload/index.html">
+      图片不合适？快去上传！站长正全力修复……
+    </a>
+    <script>
+      let youShi = false;
+      function change1() {
+        let button1 = document.getElementById("button1");
+        let typeBox1 = document.getElementById("typeBox1");
+        if (youShi) {
+          youShi = false;
+          button1.innerText = "✔";
+          typeBox1.style.borderBottomColor = "#fff";
+          typeBox1.value = "";
+          typeBox1.readOnly = false;
+          window.localStorage.removeItem("shi");
+        } else {
+          youShi = true;
+          button1.innerText = "✘";
+          typeBox1.style.borderBottomColor = "transparent";
+          typeBox1.readOnly = true;
+          window.localStorage.setItem("shi", typeBox1.value);
+        }
+      }
+      let data1 = window.localStorage.getItem("shi");
+      if (data1) {
+        document.getElementById("typeBox1").value = data1;
+        change1();
+      }
+      let youXinQing = false;
+      function change2() {
+        let button2 = document.getElementById("button2");
+        let typeBox2 = document.getElementById("typeBox2");
+        if (youXinQing) {
+          youXinQing = false;
+          button2.innerText = "✔";
+          typeBox2.style.borderBottomColor = "#fff";
+          typeBox2.value = "";
+          typeBox2.readOnly = false;
+          window.localStorage.removeItem("xinQing");
+        } else {
+          youXinQing = true;
+          button2.innerText = "✘";
+          typeBox2.style.borderBottomColor = "transparent";
+          typeBox2.readOnly = true;
+          window.localStorage.setItem("xinQing", typeBox2.value);
+        }
+        switch (typeBox2.value) {
+          case "舒服":
+            document.getElementById("bg").style.backgroundImage =
+              "url('./sea.jpg')";
+            break;
+          case "愤怒":
+            document.getElementById("bg").style.backgroundImage =
+              "url('./volcano.jpg')";
+            break;
+          case "悲伤":
+            document.getElementById("bg").style.backgroundImage =
+              "url('./cry.jpg')";
+            break;
+          case "迷茫":
+            document.getElementById("bg").style.backgroundImage =
+              "url('./mountain.jpg')";
+            break;
+          default:
+            document.getElementById("bg").style.backgroundImage =
+              "url('./star.jpg')";
+            break;
+        }
+      }
+      let data2 = window.localStorage.getItem("xinQing");
+      if (data2) {
+        document.getElementById("typeBox2").value = data2;
+        change2();
+      }
+    </script>
+  </body>
+</html>
