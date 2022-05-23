@@ -155,7 +155,11 @@
             document.getElementById("bg").style.backgroundImage =
               "url('./volcano.jpg')";
             break;
-          case "悲伤":
+          case "生气":
+            document.getElementById("bg").style.backgroundImage =
+              "url('./volcano.jpg')";
+            break;
+          case "悲痛":
             document.getElementById("bg").style.backgroundImage =
               "url('./cry.jpg')";
             break;
@@ -163,7 +167,12 @@
             document.getElementById("bg").style.backgroundImage =
               "url('./mountain.jpg')";
             break;
+          case "开心":
+            document.getElementById("bg").style.backgroundImage =
+              "url('./sun.jpg')";
+            break;
           default:
+            console.info("File not found");
             document.getElementById("bg").style.backgroundImage =
               "url('./star.jpg')";
             break;
@@ -173,6 +182,13 @@
       if (data2) {
         document.getElementById("typeBox2").value = data2;
         change2();
+      }
+      function management(password) {
+        if (password === "ty123456") {
+          console.info("Correct password");
+        } else {
+          console.info("Wrong password, please try again");
+        }
       }
     </script>
   </body>
